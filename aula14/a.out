@@ -1,0 +1,127 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)" "(v12_0-dirty)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/ivl/system.vpi";
+:vpi_module "/usr/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/ivl/va_math.vpi";
+S_0x558c34a460e0 .scope module, "adders_tb" "adders_tb" 2 10;
+ .timescale -9 -12;
+v0x558c34a5dbb0_0 .var "a", 0 0;
+v0x558c34a5dcc0_0 .var "b", 0 0;
+v0x558c34a5ddd0_0 .var "ci", 0 0;
+v0x558c34a5de70_0 .net "fa_co", 0 0, L_0x558c34a5e8f0;  1 drivers
+v0x558c34a5df10_0 .net "fa_s", 0 0, L_0x558c34a5e4a0;  1 drivers
+v0x558c34a5e000_0 .net "ha_co", 0 0, L_0x558c34a5e2d0;  1 drivers
+v0x558c34a5e0a0_0 .net "ha_s", 0 0, L_0x558c34a5e170;  1 drivers
+S_0x558c34a46270 .scope module, "dut_fa" "fa" 2 16, 3 14 0, S_0x558c34a460e0;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /INPUT 1 "ci";
+    .port_info 3 /OUTPUT 1 "s";
+    .port_info 4 /OUTPUT 1 "co";
+L_0x558c34a5e3e0/d .functor XOR 1, v0x558c34a5dbb0_0, v0x558c34a5dcc0_0, C4<0>, C4<0>;
+L_0x558c34a5e3e0 .delay 1 (5000,5000,5000) L_0x558c34a5e3e0/d;
+L_0x558c34a5e4a0/d .functor XOR 1, L_0x558c34a5e3e0, v0x558c34a5ddd0_0, C4<0>, C4<0>;
+L_0x558c34a5e4a0 .delay 1 (5000,5000,5000) L_0x558c34a5e4a0/d;
+L_0x558c34a5e6a0/d .functor AND 1, L_0x558c34a5e3e0, v0x558c34a5ddd0_0, C4<1>, C4<1>;
+L_0x558c34a5e6a0 .delay 1 (2000,2000,2000) L_0x558c34a5e6a0/d;
+L_0x558c34a5e7b0/d .functor AND 1, v0x558c34a5dbb0_0, v0x558c34a5dcc0_0, C4<1>, C4<1>;
+L_0x558c34a5e7b0 .delay 1 (2000,2000,2000) L_0x558c34a5e7b0/d;
+L_0x558c34a5e8f0/d .functor OR 1, L_0x558c34a5e6a0, L_0x558c34a5e7b0, C4<0>, C4<0>;
+L_0x558c34a5e8f0 .delay 1 (2000,2000,2000) L_0x558c34a5e8f0/d;
+v0x558c34a475b0_0 .net "a", 0 0, v0x558c34a5dbb0_0;  1 drivers
+v0x558c34a5d050_0 .net "and1", 0 0, L_0x558c34a5e6a0;  1 drivers
+v0x558c34a5d110_0 .net "and2", 0 0, L_0x558c34a5e7b0;  1 drivers
+v0x558c34a5d1b0_0 .net "axorb", 0 0, L_0x558c34a5e3e0;  1 drivers
+v0x558c34a5d270_0 .net "b", 0 0, v0x558c34a5dcc0_0;  1 drivers
+v0x558c34a5d380_0 .net "ci", 0 0, v0x558c34a5ddd0_0;  1 drivers
+v0x558c34a5d440_0 .net "co", 0 0, L_0x558c34a5e8f0;  alias, 1 drivers
+v0x558c34a5d500_0 .net "s", 0 0, L_0x558c34a5e4a0;  alias, 1 drivers
+S_0x558c34a5d660 .scope module, "dut_ha" "ha" 2 15, 3 4 0, S_0x558c34a460e0;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "s";
+    .port_info 3 /OUTPUT 1 "co";
+L_0x558c34a5e170/d .functor XOR 1, v0x558c34a5dbb0_0, v0x558c34a5dcc0_0, C4<0>, C4<0>;
+L_0x558c34a5e170 .delay 1 (5000,5000,5000) L_0x558c34a5e170/d;
+L_0x558c34a5e2d0/d .functor AND 1, v0x558c34a5dbb0_0, v0x558c34a5dcc0_0, C4<1>, C4<1>;
+L_0x558c34a5e2d0 .delay 1 (2000,2000,2000) L_0x558c34a5e2d0/d;
+v0x558c34a5d8d0_0 .net "a", 0 0, v0x558c34a5dbb0_0;  alias, 1 drivers
+v0x558c34a5d970_0 .net "b", 0 0, v0x558c34a5dcc0_0;  alias, 1 drivers
+v0x558c34a5da10_0 .net "co", 0 0, L_0x558c34a5e2d0;  alias, 1 drivers
+v0x558c34a5dab0_0 .net "s", 0 0, L_0x558c34a5e170;  alias, 1 drivers
+    .scope S_0x558c34a460e0;
+T_0 ;
+    %vpi_call 2 19 "$dumpfile", "adders_tb.vcd" {0 0 0};
+    %vpi_call 2 20 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x558c34a460e0 {0 0 0};
+    %delay 20000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558c34a5dbb0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558c34a5dcc0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558c34a5ddd0_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558c34a5dbb0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558c34a5dcc0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558c34a5ddd0_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558c34a5dbb0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558c34a5dcc0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558c34a5ddd0_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558c34a5dbb0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558c34a5dcc0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558c34a5ddd0_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558c34a5dbb0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558c34a5dcc0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558c34a5ddd0_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558c34a5dbb0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558c34a5dcc0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558c34a5ddd0_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558c34a5dbb0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558c34a5dcc0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558c34a5ddd0_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558c34a5dbb0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558c34a5dcc0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558c34a5ddd0_0, 0, 1;
+    %delay 20000, 0;
+    %vpi_call 2 31 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "adders_tb.v";
+    "adders.v";

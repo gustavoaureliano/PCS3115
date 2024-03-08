@@ -1,0 +1,25 @@
+module halfAdder1b_tb;
+	reg A;
+	reg B;
+	wire S;
+	wire Cout;
+	halfAdder1b u_halfAdder1b (
+		.A(A),
+		.B(B),
+		.S(S),
+		.Cout(Cout)
+	);
+	initial begin
+		$dumpfile("halfAdder1b.vcd");
+		$dumpvars;
+		integer i;
+		for (i = 0; i <= 3; i += 1) begin
+			integer j;
+			for (j = 0; j <= 3; j += 1) begin
+				A = i;
+				B = j;
+				$display("%b + %b = %b%b /", A, B, Cout, S);
+			end
+			$finish;
+		end
+endmodule
